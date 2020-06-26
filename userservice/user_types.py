@@ -1,11 +1,14 @@
-from dataclasses import dataclass, asdict
-from dataclasses_json import dataclass_json
+from dataclasses import dataclass, asdict, field
+from dataclasses_json import dataclass_json, config
 from typing import NewType, List
 
 
-UserId = NewType('UserId', int)
-UserName = NewType('UserName', str)
-Email = NewType('Email', str)
+#UserId = NewType('UserId', int)
+#UserName = NewType('UserName', str)
+#Email = NewType('Email', str)
+UserId = int
+UserName = str
+Email = str
 
 
 @dataclass_json
@@ -24,14 +27,17 @@ class User:
 @dataclass_json
 @dataclass
 class DBUser(User):
-    id: UserId
+    user_id: UserId = field(metadata=config(field_name="id"))
 
     @classmethod
-    def from_base(cls, id:UserId, user: User):
-        return cls(id=id, **asdict(user))
+    def from_base(cls, user_id: UserId, user: User):
+        return cls(user_id=user_id, **asdict(user))
+
+    def to_base(self) -> User:
+        return User(name=self.name, email=self.email)
 
 
 @dataclass_json
 @dataclass
-class DBUserList(List[DBUser]):
-    pass
+class DBUserList:
+    users: List[DBUser]
