@@ -3,7 +3,10 @@ services:
 
   app:
     build: ./
+    #stdin_open: true
+    tty: true
     ports:
       - "8080:8080"
     healthcheck:
       test: ["CMD", "curl", "-f", "localhost:8080"]
+
