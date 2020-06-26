@@ -87,8 +87,8 @@ class DataStorage(DataAccessGateInterface):
             batch = DBUserList([])
 
             async with self._lock:
-                for user_id, user in self._db.users.irange(minimum=next_user_id):
-                    batch.users.append(DBUser.from_base(user_id=user_id, user=user))
+                for user_id in self._db.users.irange(minimum=next_user_id):
+                    batch.users.append(DBUser.from_base(user_id=user_id, user=self._db.users[user_id]))
 
                     if len(batch.users) >= count:
                         break
