@@ -46,3 +46,4 @@ ADD userservice /app
 EXPOSE 8080
 STOPSIGNAL SIGTERM
 ENTRYPOINT ["python", "app"]
+

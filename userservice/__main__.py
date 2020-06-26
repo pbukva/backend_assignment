@@ -11,3 +11,4 @@ if __name__ == '__main__':
     LOGGER.info('### Starting user service ###')
     app = create_app()
     web.run_app(app)
+
