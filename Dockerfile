@@ -43,6 +43,6 @@ COPY --from=builder $PYROOT/lib/ $PYROOT/lib/
 
 ADD userservice /app
 
-EXPOSE 80
+EXPOSE 8080
 STOPSIGNAL SIGTERM
 ENTRYPOINT ["python", "app"]
