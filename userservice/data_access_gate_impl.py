@@ -4,8 +4,8 @@ from typing import Dict, Optional, MutableMapping
 from asyncio import Lock
 from contextlib import contextmanager
 from sortedcontainers import SortedDict
-from .data_access_gate_interface import DataAccessGateInterface, DBUserList
-from .user_types import User, DBUser, UserId
+from data_access_gate_interface import DataAccessGateInterface, DBUserList
+from user_types import User, DBUser, UserId
 
 
 #class UsersDB(SortedDict, MutableMapping[UserId, User]):

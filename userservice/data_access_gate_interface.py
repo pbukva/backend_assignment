@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Optional
-from .user_types import UserId, User, DBUser, DBUserList
+from user_types import UserId, User, DBUser, DBUserList
 
 
 class DataAccessGateInterface(ABC):

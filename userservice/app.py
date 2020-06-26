@@ -1,9 +1,10 @@
 import logging
 from aiohttp import web
 from yarl import URL
-from .user_types import User, DBUser, DBUserList
-from.data_access_gate_impl import DataStorage, DB
 from sortedcontainers import SortedDict
+from user_types import User, DBUser, DBUserList
+from data_access_gate_impl import DataStorage, DB
+
 
 LOGGER = logging.getLogger(__name__)
 ds_key = 'ds'
@@ -35,7 +36,7 @@ async def get_user(request: web.Request):
 async def get_users(request):
     ds: DataStorage = request.app[ds_key]
 
-    # *** This needs to reworked using the Multipart concept ***
+    # *** This needs to be reworked using Multipart concept ***
     u = DBUserList([])
     async for batch in ds.iterate():
         u.users.extend(batch.users)
