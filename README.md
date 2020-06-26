@@ -1,6 +1,4 @@
-# NBX Backend Recruitment Assignment
-
-Welcome to the NBX developer assignment! The goal of this project to get an idea of your coding style. Enjoy!
+# Backend user svc
 
 ## Requirements
 
