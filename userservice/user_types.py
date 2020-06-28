@@ -3,9 +3,6 @@ from dataclasses_json import dataclass_json, config
 from typing import NewType, List
 
 
-#UserId = NewType('UserId', int)
-#UserName = NewType('UserName', str)
-#Email = NewType('Email', str)
 UserId = int
 UserName = str
 Email = str
@@ -17,11 +14,11 @@ class User:
     name: UserName
     email: Email
 
-    def __hash__(self):
-        return hash(self.name)
+    def __hash__(self) -> int:
+        return hash(self.email)
 
-    def __eq__(self, other):
-        return self.name == other.name
+    def __eq__(self, other: 'User') -> bool:
+        return self.email == other.email
 
 
 @dataclass_json
@@ -30,7 +27,7 @@ class DBUser(User):
     user_id: UserId = field(metadata=config(field_name="id"))
 
     @classmethod
-    def from_base(cls, user_id: UserId, user: User):
+    def from_base(cls, user_id: UserId, user: User) -> 'DBUser':
         return cls(user_id=user_id, **asdict(user))
 
     def to_base(self) -> User:
